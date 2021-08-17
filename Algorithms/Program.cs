@@ -14,7 +14,9 @@ namespace Algorithms
                 switch (testNo)
                 {
                     case "1":
-                        Console.WriteLine("Test 1");
+                        Console.WriteLine("Test 1 Started...");
+
+
 
 
 
