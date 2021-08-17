@@ -6,7 +6,24 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            while (true)
+            {
+                Console.WriteLine("Input test numer: ");
+                var testNo = Console.ReadLine();
+
+                switch (testNo)
+                {
+                    case "1":
+                        Console.WriteLine("Test 1");
+
+
+
+                        break;
+                    default:
+                        break;
+                }
+                Console.WriteLine("Test Finished!");
+            }
         }
     }
 }
