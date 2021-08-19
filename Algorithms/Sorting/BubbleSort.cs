@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Algorithms.Sorting
 {
-    public class Bubblesort<TArr> : SortBase<TArr> where TArr : IComparable
+    public class BubbleSort<TArr> : SortBase<TArr> where TArr : IComparable
     {
         public void Sort(TArr[] array)
         {

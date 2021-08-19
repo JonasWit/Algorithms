@@ -37,7 +37,7 @@ namespace Algorithms
                             sortString.BenchmarkEvent -= TestBenchmarkArrayEvent;
 
                             Console.WriteLine("Test 3 Started - insertion sort on Int");
-                            var insInt = new Insertionsort<int>();
+                            var insInt = new InsertionSort<int>();
                             insInt.MutationEvent += TestIntArrayEvent;
                             insInt.BenchmarkEvent += TestBenchmarkArrayEvent;
                             insInt.Benchmark(() => insInt.Sort(DataSource.IntArray));
@@ -46,7 +46,7 @@ namespace Algorithms
                             insInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
 
                             Console.WriteLine("Test 4 Started - bubble sort on Int");
-                            var bubInt = new Bubblesort<int>();
+                            var bubInt = new BubbleSort<int>();
                             bubInt.MutationEvent += TestIntArrayEvent;
                             bubInt.BenchmarkEvent += TestBenchmarkArrayEvent;
                             bubInt.Benchmark(() => bubInt.Sort(DataSource.IntArray));
@@ -54,27 +54,31 @@ namespace Algorithms
                             bubInt.MutationEvent -= TestIntArrayEvent;
                             bubInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
 
+                            Console.WriteLine("Test 5 Started - quick sort on Int");
+                            var qInt = new QuickSort<int>();
+                            qInt.MutationEvent += TestIntArrayEvent;
+                            qInt.BenchmarkEvent += TestBenchmarkArrayEvent;
+                            qInt.Benchmark(() => qInt.Sort(DataSource.IntArray));
 
-
-
-
-
+                            qInt.MutationEvent -= TestIntArrayEvent;
+                            qInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
-                            throw;
                         }
                         break;
                     case "selection-sort2":
                         try
                         {
                         
+
+
+
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
-                            throw;
                         }
                         break;
                     default:
