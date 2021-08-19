@@ -4,14 +4,16 @@ using System.Text;
 
 namespace Algorithms.Sorting
 {
-    public static class SelectionSort
+    public class SelectionSort<TArr> where TArr : IComparable
     {
-        public static void Sort<T>(T[] array) where T : IComparable
+        public event EventHandler<ArrayPayload<TArr>> EmitEvent;
+
+        public void Sort(TArr[] array) 
         {
             for (int i = 0; i < array.Length; i++)
             {
                 var minIndex = i;
-                T minValue = array[i];
+                TArr minValue = array[i];
                 for (int j = 0; j < array.Length; j++)
                 {
                     if (array[j].CompareTo(minValue) < 0)
@@ -21,14 +23,17 @@ namespace Algorithms.Sorting
                     }
                 }
                 Swap(array, i, minIndex);
+                OnEventReached(new ArrayPayload<TArr>() { Arr = array});
             }
         }
 
-        private static void Swap<T>(T[] array, int first, int second)
+        private void Swap<T>(T[] array, int first, int second)
         {
             T temp = array[first];
             array[first] = array[second];
             array[second] = temp;
         }
+
+        protected virtual void OnEventReached(ArrayPayload<TArr> e) => EmitEvent?.Invoke(this, e);
     }
 }
