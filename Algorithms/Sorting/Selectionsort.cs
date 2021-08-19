@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Algorithms.Sorting
 {
-    public class SelectionSort<TArr> where TArr : IComparable
+    public class SelectionSort<TArr> : SortBase<TArr> where TArr : IComparable
     {
-        public event EventHandler<ArrayPayload<TArr>> EmitEvent;
-
         public void Sort(TArr[] array) 
         {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int mutation = 0;
+
             for (int i = 0; i < array.Length; i++)
             {
                 var minIndex = i;
@@ -23,17 +26,11 @@ namespace Algorithms.Sorting
                     }
                 }
                 Swap(array, i, minIndex);
-                OnEventReached(new ArrayPayload<TArr>() { Arr = array});
+                OnMutationEventReached(new ArrayPayload<TArr>() { Arr = array, Mutation = mutation++});
             }
-        }
 
-        private void Swap<T>(T[] array, int first, int second)
-        {
-            T temp = array[first];
-            array[first] = array[second];
-            array[second] = temp;
+            stopwatch.Stop();
+            OnBenchmarkEventReached(new TimeSpanPayload() { ElapsedMiliseconds = stopwatch.ElapsedMilliseconds });
         }
-
-        protected virtual void OnEventReached(ArrayPayload<TArr> e) => EmitEvent?.Invoke(this, e);
     }
 }
