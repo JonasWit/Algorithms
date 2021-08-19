@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace Algorithms.Sorting
@@ -14,6 +15,15 @@ namespace Algorithms.Sorting
             T temp = array[first];
             array[first] = array[second];
             array[second] = temp;
+        }
+
+        public void Benchmark(Action sortMethod)
+        {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            sortMethod.Invoke();
+            stopwatch.Stop();
+            OnBenchmarkEventReached(new TimeSpanPayload() { ElapsedMiliseconds = stopwatch.ElapsedMilliseconds });
         }
 
         protected virtual void OnMutationEventReached(ArrayPayload<TArr> e) => MutationEvent?.Invoke(this, e);

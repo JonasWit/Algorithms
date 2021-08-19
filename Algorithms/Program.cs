@@ -22,7 +22,7 @@ namespace Algorithms
                             var sortInt = new SelectionSort<int>();
                             sortInt.MutationEvent += TestIntArrayEvent;
                             sortInt.BenchmarkEvent += TestBenchmarkArrayEvent;
-                            sortInt.Sort(DataSource.IntArray);
+                            sortInt.Benchmark(() => sortInt.Sort(DataSource.IntArray));
 
                             sortInt.MutationEvent -= TestIntArrayEvent;
                             sortInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
@@ -31,7 +31,7 @@ namespace Algorithms
                             var sortString = new SelectionSort<string>();
                             sortString.MutationEvent += TestStringArrayEvent;
                             sortString.BenchmarkEvent += TestBenchmarkArrayEvent;
-                            sortString.Sort(DataSource.StringArray);
+                            sortString.Benchmark(() => sortString.Sort(DataSource.StringArray));
 
                             sortString.MutationEvent -= TestStringArrayEvent;
                             sortString.BenchmarkEvent -= TestBenchmarkArrayEvent;
@@ -40,12 +40,19 @@ namespace Algorithms
                             var insInt = new Insertionsort<int>();
                             insInt.MutationEvent += TestIntArrayEvent;
                             insInt.BenchmarkEvent += TestBenchmarkArrayEvent;
-                            insInt.Sort(DataSource.IntArray);
+                            insInt.Benchmark(() => insInt.Sort(DataSource.IntArray));
 
                             insInt.MutationEvent -= TestIntArrayEvent;
                             insInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
 
+                            Console.WriteLine("Test 4 Started - bubble sort on Int");
+                            var bubInt = new Bubblesort<int>();
+                            bubInt.MutationEvent += TestIntArrayEvent;
+                            bubInt.BenchmarkEvent += TestBenchmarkArrayEvent;
+                            bubInt.Benchmark(() => bubInt.Sort(DataSource.IntArray));
 
+                            bubInt.MutationEvent -= TestIntArrayEvent;
+                            bubInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
 
 
 
@@ -84,7 +91,7 @@ namespace Algorithms
             Console.WriteLine($"Array mutation {e.Mutation}: {string.Join(", ", e.Arr)}");
 
         static void TestBenchmarkArrayEvent(object sender, TimeSpanPayload e) =>
-            Console.WriteLine($">>>> Time spent: {e.ElapsedMiliseconds}ms <<<<");
+            Console.WriteLine($">>>> Time spent: {e.ElapsedMiliseconds}ms <<<<" + Environment.NewLine);
 
     }
 }

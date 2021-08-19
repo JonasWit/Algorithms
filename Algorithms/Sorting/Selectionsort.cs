@@ -9,10 +9,7 @@ namespace Algorithms.Sorting
     {
         public void Sort(TArr[] array) 
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
             int mutation = 0;
-
             for (int i = 0; i < array.Length; i++)
             {
                 var minIndex = i;
@@ -28,9 +25,6 @@ namespace Algorithms.Sorting
                 Swap(array, i, minIndex);
                 OnMutationEventReached(new ArrayPayload<TArr>() { Arr = array, Mutation = mutation++});
             }
-
-            stopwatch.Stop();
-            OnBenchmarkEventReached(new TimeSpanPayload() { ElapsedMiliseconds = stopwatch.ElapsedMilliseconds });
         }
     }
 }
