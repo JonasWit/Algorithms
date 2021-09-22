@@ -54,21 +54,21 @@ namespace Algorithms
                             bubInt.MutationEvent -= TestIntArrayEvent;
                             bubInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
 
-                            Console.WriteLine("Test 5 Started - quick sort on Int");
-                            var qInt = new QuickSort<int>();
-                            qInt.MutationEvent += TestIntArrayEvent;
-                            qInt.BenchmarkEvent += TestBenchmarkArrayEvent;
-                            qInt.Benchmark(() => qInt.Sort(DataSource.IntArray));
+                            //Console.WriteLine("Test 5 Started - quick sort on Int");
+                            //var qInt = new QuickSort<int>();
+                            //qInt.MutationEvent += TestIntArrayEvent;
+                            //qInt.BenchmarkEvent += TestBenchmarkArrayEvent;
+                            //qInt.Benchmark(() => qInt.Sort(DataSource.IntArray));
 
-                            qInt.MutationEvent -= TestIntArrayEvent;
-                            qInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
+                            //qInt.MutationEvent -= TestIntArrayEvent;
+                            //qInt.BenchmarkEvent -= TestBenchmarkArrayEvent;
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
                         }
                         break;
-                    case "selection-sort2":
+                    case "":
                         try
                         {
                         
