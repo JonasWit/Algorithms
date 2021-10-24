@@ -68,10 +68,29 @@ namespace Algorithms
                             Console.WriteLine(ex.Message);
                         }
                         break;
+                    case "brackets":
+                        try
+                        {
+                            char[] exp = { '{', '(', ')', '}', '[', ']' };
+
+                            // Function call
+                            if (AreBracketsBalanced(exp))
+                                Console.WriteLine("Balanced ");
+                            else
+                                Console.WriteLine("Not Balanced ");
+
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
                     case "":
                         try
                         {
-                        
+
 
 
 
