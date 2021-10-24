@@ -1,4 +1,5 @@
 ﻿using Algorithms.Data;
+using Algorithms.Miscellaneous;
 using Algorithms.Sorting;
 using System;
 
@@ -71,16 +72,13 @@ namespace Algorithms
                     case "brackets":
                         try
                         {
-                            char[] exp = { '{', '(', ')', '}', '[', ']' };
+                            char[] exp = { '{', '(', ')', '}', '[', ']', '}' };
 
                             // Function call
-                            if (AreBracketsBalanced(exp))
+                            if (BalancedBrackets.AreBracketsBalanced(exp))
                                 Console.WriteLine("Balanced ");
                             else
                                 Console.WriteLine("Not Balanced ");
-
-
-
                         }
                         catch (Exception ex)
                         {
